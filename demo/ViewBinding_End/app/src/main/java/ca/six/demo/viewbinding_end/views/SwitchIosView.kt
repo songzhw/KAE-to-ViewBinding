@@ -6,10 +6,9 @@ import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import ca.six.demo.kae_converter1.R
-import ca.six.demo.kae_converter1.extensions.dpToPx
-import kotlinx.android.synthetic.main.view_ios_switch.view.ivSwitchBg
-import kotlinx.android.synthetic.main.view_ios_switch.view.mtlaySwitch
+import ca.six.demo.viewbinding_end.R
+import ca.six.demo.viewbinding_end.databinding.ViewIosSwitchBinding
+import ca.six.demo.viewbinding_end.extensions.dpToPx
 
 class SwitchIosView @JvmOverloads constructor(
     context: Context,
@@ -22,29 +21,28 @@ class SwitchIosView @JvmOverloads constructor(
     var isActive = true
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.view_ios_switch, this, true)
+        val root = LayoutInflater.from(context).inflate(R.layout.view_ios_switch, this, true)
+        val binding = ViewIosSwitchBinding.bind(root)
 
         greenBg.cornerRadius = 30f.dpToPx()
         greenBg.setColor(Color.parseColor("#1DC457"))
         grayBg.cornerRadius = 30f.dpToPx()
         grayBg.setColor(Color.parseColor("#D5D6D7"))
 
-        ivSwitchBg.setImageDrawable(greenBg)
+        binding.ivSwitchBg.setImageDrawable(greenBg)
 
-        ivSwitchBg.setOnClickListener {
+        binding.ivSwitchBg.setOnClickListener {
             if(isActive){
-                mtlaySwitch.transitionToEnd()
+                binding.mtlaySwitch.transitionToEnd()
             } else {
-                mtlaySwitch.transitionToStart()
+                binding.mtlaySwitch.transitionToStart()
             }
 
             val src = if (isActive) grayBg else greenBg
-            ivSwitchBg.setImageDrawable(src)
+            binding.ivSwitchBg.setImageDrawable(src)
 
             isActive = !isActive
         }
-
-
 
     }
 
