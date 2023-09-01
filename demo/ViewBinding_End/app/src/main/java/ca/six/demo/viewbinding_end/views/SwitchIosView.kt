@@ -21,8 +21,10 @@ class SwitchIosView @JvmOverloads constructor(
     var isActive = true
 
     init {
-        val root = LayoutInflater.from(context).inflate(R.layout.view_ios_switch, this, true)
-        val binding = ViewIosSwitchBinding.bind(root)
+        val inflater = getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val binding = ViewIosSwitchBinding.inflate(inflater, this, true) //binding.root是一个motlinLayout, 即来自于xml
+        // layoutInflater.inflate()return的是:  If root was supplied and attachToRoot is true, this is root;
+        // otherwise it is the root of the inflated XML file.
 
         greenBg.cornerRadius = 30f.dpToPx()
         greenBg.setColor(Color.parseColor("#1DC457"))

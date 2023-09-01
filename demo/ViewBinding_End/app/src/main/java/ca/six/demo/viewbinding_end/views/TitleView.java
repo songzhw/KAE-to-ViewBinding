@@ -2,6 +2,7 @@ package ca.six.demo.viewbinding_end.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -32,6 +33,10 @@ public class TitleView extends FrameLayout {
     public void init(@NonNull final Context context, @Nullable AttributeSet attrs) {
         final View view = inflate(context, R.layout.view_top_view, this);
         binding = ViewTopViewBinding.bind(view);
+
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        binding = ViewTopViewBinding.inflate(inflater, this, true);
+
     }
 
 }
