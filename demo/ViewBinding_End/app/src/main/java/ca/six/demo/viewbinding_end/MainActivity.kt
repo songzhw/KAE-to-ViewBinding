@@ -7,7 +7,7 @@ import android.view.MenuItem
 import ca.six.demo.viewbinding_end.databinding.ActivityMainBinding
 import ca.six.demo.viewbinding_end.extensions.nav
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
