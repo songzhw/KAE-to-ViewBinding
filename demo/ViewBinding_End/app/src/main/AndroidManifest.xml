@@ -17,10 +17,15 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".CustomViewPage2"/>
+        <activity android:name=".CustomViewPage"/>
+        <activity android:name=".CustomViewPage3"/>
+        <activity android:name=".FragmentBoxPage"/>
+        <activity android:name=".RvPage"/>
     </application>
 
 </manifest>

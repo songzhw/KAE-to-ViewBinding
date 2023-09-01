@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import ca.six.demo.kae_converter1.extensions.nav
-import ca.six.demo.viewbinding_end.R
 import ca.six.demo.viewbinding_end.databinding.ActivityMainBinding
 import ca.six.demo.viewbinding_end.extensions.nav
 
