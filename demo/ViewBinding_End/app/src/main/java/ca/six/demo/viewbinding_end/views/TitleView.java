@@ -9,8 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import ca.six.demo.viewbinding_end.R;
+import ca.six.demo.viewbinding_end.databinding.ViewTopViewBinding;
 
 public class TitleView extends FrameLayout {
+    public ViewTopViewBinding binding;
+
     public TitleView(@NonNull Context context) {
         super(context);
         init(context, null);
@@ -28,6 +31,7 @@ public class TitleView extends FrameLayout {
 
     public void init(@NonNull final Context context, @Nullable AttributeSet attrs) {
         final View view = inflate(context, R.layout.view_top_view, this);
+        binding = ViewTopViewBinding.bind(view);
     }
 
 }
