@@ -1,4 +1,4 @@
-package ca.six.adv23.rv.adapters.one
+package ca.six.demo.viewbinding_end.one
 
 import android.net.Uri
 import android.view.LayoutInflater

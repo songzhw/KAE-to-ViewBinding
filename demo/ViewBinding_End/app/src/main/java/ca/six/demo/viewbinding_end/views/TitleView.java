@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import ca.six.demo.kae_converter1.R;
+import ca.six.demo.viewbinding_end.R;
 
 public class TitleView extends FrameLayout {
     public TitleView(@NonNull Context context) {

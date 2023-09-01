@@ -3,8 +3,8 @@ package ca.six.demo.viewbinding_end
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import ca.six.adv23.rv.adapters.one.OneAdapter
-import ca.six.adv23.rv.adapters.one.RvViewHolder
+import ca.six.demo.viewbinding_end.one.OneAdapter
+import ca.six.demo.viewbinding_end.one.RvViewHolder
 
 class RvPage : AppCompatActivity(R.layout.actv_rv) {
     override fun onCreate(savedInstanceState: Bundle?) {

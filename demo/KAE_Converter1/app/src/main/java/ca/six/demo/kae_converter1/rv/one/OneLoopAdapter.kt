@@ -1,4 +1,4 @@
-package ca.six.adv23.rv.adapters.one
+package ca.six.demo.kae_converter1.rv.one
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

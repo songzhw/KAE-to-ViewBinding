@@ -3,8 +3,8 @@ package ca.six.demo.kae_converter1
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import ca.six.adv23.rv.adapters.one.OneAdapter
-import ca.six.adv23.rv.adapters.one.RvViewHolder
+import ca.six.demo.kae_converter1.rv.one.OneAdapter
+import ca.six.demo.kae_converter1.rv.one.RvViewHolder
 import kotlinx.android.synthetic.main.actv_rv.*
 
 class RvPage : AppCompatActivity(R.layout.actv_rv) {
