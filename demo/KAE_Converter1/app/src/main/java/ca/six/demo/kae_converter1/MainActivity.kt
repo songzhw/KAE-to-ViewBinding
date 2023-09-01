@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.btn1
 import kotlinx.android.synthetic.main.activity_main.btn2
 import kotlinx.android.synthetic.main.activity_main.btn3
 import kotlinx.android.synthetic.main.activity_main.btn4
+import kotlinx.android.synthetic.main.activity_main.btn5
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -20,8 +21,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         btn2.setOnClickListener { nav<CustomViewPage>() }
         btn3.text = "CustomView2"
         btn3.setOnClickListener { nav<CustomViewPage2>()  }
-        btn4.text = "Fragments"
-        btn4.setOnClickListener { nav<FragmentBoxPage>() }
+        btn4.text = "CustomView3"
+        btn4.setOnClickListener { nav<CustomViewPage3>() }
+        btn5.text = "Fragments"
+        btn5.setOnClickListener { nav<FragmentBoxPage>() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
