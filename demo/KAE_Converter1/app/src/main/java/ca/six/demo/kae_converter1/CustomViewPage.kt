@@ -23,21 +23,3 @@ class CustomViewPage: AppCompatActivity(R.layout.actv_custom_view) {
     }
 
 }
-
-class MyOverlayView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    View(context, attrs, defStyleAttr) {
-    private val eraser = Paint(Paint.ANTI_ALIAS_FLAG)
-
-    init {
-        setLayerType(LAYER_TYPE_SOFTWARE, null)
-        eraser.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-        setOnClickListener {
-            this.visibility = View.GONE
-        }
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        canvas.drawColor(Color.parseColor("#8A000000")) // 半透明背景 Colors.black54
-        canvas.drawCircle(140f, 100f, 100f, eraser)
-    }
-}
