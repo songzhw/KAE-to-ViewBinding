@@ -10,7 +10,7 @@ class StartFragment: Fragment(R.layout.frag_start) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnNext.setOnClickListener {
+        binding.btnNext.setOnClickListener {
             val actv = this.activity as? AppCompatActivity ?: return@setOnClickListener
             actv.replaceFragment(EndFragment(), true)
         }

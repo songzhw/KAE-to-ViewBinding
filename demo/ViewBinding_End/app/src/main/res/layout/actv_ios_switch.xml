@@ -12,7 +12,7 @@
         android:layout_marginTop="12dp"
         />
 
-    <ca.six.demo.kae_converter1.views.SwitchIosView
+    <ca.six.demo.viewbinding_end.views.SwitchIosView
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"

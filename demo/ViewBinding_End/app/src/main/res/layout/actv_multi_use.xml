@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ca.six.demo.kae_converter1.views.TitleView
+    <ca.six.demo.viewbinding_end.views.TitleView
         android:id="@+id/viewTitle"
         android:layout_width="match_parent" android:layout_height="wrap_content"
         />

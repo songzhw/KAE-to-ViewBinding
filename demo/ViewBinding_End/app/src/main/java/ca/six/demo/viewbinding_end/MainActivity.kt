@@ -6,21 +6,24 @@ import android.view.Menu
 import android.view.MenuItem
 import ca.six.demo.kae_converter1.extensions.nav
 import ca.six.demo.viewbinding_end.R
+import ca.six.demo.viewbinding_end.databinding.ActivityMainBinding
+import ca.six.demo.viewbinding_end.extensions.nav
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        btn1.text = "Rv"
-        btn1.setOnClickListener { nav<RvPage>() }
-        btn2.text = "CustomView"
-        btn2.setOnClickListener { nav<CustomViewPage>() }
-        btn3.text = "CustomView2"
-        btn3.setOnClickListener { nav<CustomViewPage2>()  }
-        btn4.text = "CustomView3"
-        btn4.setOnClickListener { nav<CustomViewPage3>() }
-        btn5.text = "Fragments"
-        btn5.setOnClickListener { nav<FragmentBoxPage>() }
+        binding.btn1.text = "Rv"
+        binding.btn1.setOnClickListener { nav<RvPage>() }
+        binding.btn2.text = "CustomView"
+        binding.btn2.setOnClickListener { nav<CustomViewPage>() }
+        binding.btn3.text = "CustomView2"
+        binding.btn3.setOnClickListener { nav<CustomViewPage2>()  }
+        binding.btn4.text = "CustomView3"
+        binding.btn4.setOnClickListener { nav<CustomViewPage3>() }
+        binding.btn5.text = "Fragments"
+        binding.btn5.setOnClickListener { nav<FragmentBoxPage>() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

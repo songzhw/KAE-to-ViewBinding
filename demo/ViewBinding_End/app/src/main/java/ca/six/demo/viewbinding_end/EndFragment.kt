@@ -11,7 +11,7 @@ class EndFragment : Fragment(R.layout.frag_end) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ivSea.setOnClickListener {
+        binding.ivSea.setOnClickListener {
             val actv = this.activity ?: return@setOnClickListener
             actv.nav<RvPage>()
         }
