@@ -2,6 +2,7 @@ package ca.six.demo.viewbinding_end
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ca.six.demo.viewbinding_end.databinding.ActvIosSwitchBinding
 import ca.six.demo.viewbinding_end.databinding.ActvMultiUseBinding
 
 //import kotlinx.android.synthetic.main.actv_multi_use.btnChangeTitle
@@ -13,6 +14,10 @@ class CustomViewPage3: AppCompatActivity(R.layout.actv_multi_use) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActvMultiUseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
         binding.viewTitle.binding.tvTitle.text = "hello"
 
         binding.btnChangeTitle.setOnClickListener {

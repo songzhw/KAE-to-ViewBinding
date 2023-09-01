@@ -7,11 +7,13 @@ import ca.six.demo.viewbinding_end.databinding.ActvRvBinding
 import ca.six.demo.viewbinding_end.one.OneAdapter
 import ca.six.demo.viewbinding_end.one.RvViewHolder
 
-class RvPage : AppCompatActivity(R.layout.actv_rv) {
+class RvPage : AppCompatActivity() {
     private lateinit var binding: ActvRvBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActvRvBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val data = arrayListOf(
             R.drawable.wallpaper01, R.drawable.wallpaper02, R.drawable.wallpaper03, R.drawable.wallpaper04,

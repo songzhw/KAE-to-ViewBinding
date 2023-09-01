@@ -10,6 +10,9 @@ class CustomViewPage : AppCompatActivity(R.layout.actv_custom_view) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActvCustomViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         binding.btnStart.setOnClickListener {
             binding.viewOverlay.visibility = View.VISIBLE
         }
