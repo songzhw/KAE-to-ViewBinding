@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         btn2.text = "CustomView"
         btn2.setOnClickListener { nav<CustomViewPage>() }
         btn3.text = "CustomView2"
-        btn3.setOnClickListener {  }
+        btn3.setOnClickListener { nav<CustomViewPage2>()  }
         btn4.text = "Fragments"
         btn4.setOnClickListener { nav<FragmentBoxPage>() }
     }

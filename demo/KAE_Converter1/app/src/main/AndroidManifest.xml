@@ -26,6 +26,7 @@
 
         <activity android:name=".RvPage"/>
         <activity android:name=".CustomViewPage"/>
+        <activity android:name=".CustomViewPage2"/>
         <activity android:name=".FragmentBoxPage"/>
 
     </application>
