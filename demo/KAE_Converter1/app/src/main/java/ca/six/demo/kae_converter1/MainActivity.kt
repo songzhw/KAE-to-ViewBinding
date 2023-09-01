@@ -6,6 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import ca.six.demo.kae_converter1.extensions.nav
 import kotlinx.android.synthetic.main.activity_main.btn1
+import kotlinx.android.synthetic.main.activity_main.btn2
+import kotlinx.android.synthetic.main.activity_main.btn3
+import kotlinx.android.synthetic.main.activity_main.btn4
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -13,6 +16,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         btn1.text = "Rv"
         btn1.setOnClickListener { nav<RvPage>() }
+        btn2.text = "CustomView"
+        btn2.setOnClickListener { nav<CustomViewPage>() }
+        btn3.text = "CustomView2"
+        btn3.setOnClickListener {  }
+        btn4.text = "Fragments"
+        btn4.setOnClickListener { nav<FragmentBoxPage>() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
