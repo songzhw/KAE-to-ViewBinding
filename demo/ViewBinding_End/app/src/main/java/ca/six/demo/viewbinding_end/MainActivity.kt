@@ -7,11 +7,15 @@ import android.view.MenuItem
 import ca.six.demo.viewbinding_end.databinding.ActivityMainBinding
 import ca.six.demo.viewbinding_end.extensions.nav
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
         binding.btn1.text = "Rv"
         binding.btn1.setOnClickListener { nav<RvPage>() }
         binding.btn2.text = "CustomView"
