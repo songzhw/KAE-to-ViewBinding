@@ -22,7 +22,14 @@ class SwitchIosView @JvmOverloads constructor(
 
     init {
         val inflater = getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val binding = ViewIosSwitchBinding.inflate(inflater, this, true) //binding.root是一个motlinLayout, 即来自于xml
+        val binding = ViewIosSwitchBinding.inflate(inflater, this, true)  //binding.root是一个motlinLayout, 即来自于xml
+
+        /*
+        val binding = ViewIosSwitchBinding.inflate(inflater) //binding.root是一个motlinLayout, 即来自于xml
+        this.addView(binding.root)
+        这两行代码也行, 就是少了layout params的东东了
+         */
+
         // layoutInflater.inflate()return的是:  If root was supplied and attachToRoot is true, this is root;
         // otherwise it is the root of the inflated XML file.
 

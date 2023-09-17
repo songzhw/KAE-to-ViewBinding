@@ -2,7 +2,6 @@ package ca.six.demo.viewbinding_end
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ca.six.demo.viewbinding_end.databinding.ActvIosSwitchBinding
 import ca.six.demo.viewbinding_end.databinding.ActvMultiUseBinding
 
 //import kotlinx.android.synthetic.main.actv_multi_use.btnChangeTitle
