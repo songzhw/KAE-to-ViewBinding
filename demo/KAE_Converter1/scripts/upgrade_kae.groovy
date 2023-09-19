@@ -251,9 +251,18 @@ private String generateBindingImports(String text, String bindingName, String pk
     // import ca.six.demo.viewbinding_end.databinding.ActvCustomViewBinding
     def newLine = System.lineSeparator()
     def index = text.findIndexOf { (it == newLine) }
-    def to = """${newLine}import ${pkgName}.databinding.${bindingName}
-import android.view.LayoutInflater
-import android.view.ViewGroup"""
+    def to = "${newLine}import ${pkgName}.databinding.${bindingName}"
+
+    def isInflateExist = text.contains("import android.view.LayoutInflater")
+    if(!isInflateExist) {
+        to += "${newLine}import android.view.LayoutInflater"
+    }
+
+    def isViewGroupExist = text.contains("import android.view.ViewGroup")
+    if(!isViewGroupExist) {
+        to += "${newLine}import android.view.ViewGroup"
+    }
+
     def sb = new StringBuilder(text).insert(index, to)
     return sb.toString()
 }
