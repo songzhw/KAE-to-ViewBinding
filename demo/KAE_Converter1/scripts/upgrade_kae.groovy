@@ -11,6 +11,8 @@ enum LayoutXmlPosition {
     OVERRIDE_METHOD,
 }
 
+def pkgName = "ca.six.demo.kae_converter1"
+
 // I. find the target source folder
 File projectDir = new File("upgrade_kae.groovy")
 projectDir = projectDir.absoluteFile // 不然 file.path就是"kae.groovy", 而不是absolutPath. 这会不利于我们后面找parent
@@ -19,21 +21,23 @@ while (projectDir.name != 'KAE_Converter1') {
 }
 println projectDir.absolutePath
 
+
 File appDir = new File(projectDir, "/app/src/main")
 File kotlinDir = new File(appDir, "java/ca/six/demo/kae_converter1")
 File layoutDir = new File(appDir, "res/layout")
 
+
 // file.listFiles只列出来了直系child(包括文件与目录), 没有列出孙子文件们
 kotlinDir.eachFileRecurse { aFile ->
-    if (aFile.isFile()) processEach(aFile, layoutDir)
+    if (aFile.isFile()) processEach(aFile, layoutDir, pkgName)
 }
 
 // TODO remove debug code                                                       CustomViewPage, StartFragment, EndFragment, /views/SwitchIosView, /views/DetailsView
 //def f = new File("/Users/zhengwangsong/code/exp/javakotlin/GroovyWork/assets/kae/app/src/main/java/ca/six/demo/kae_converter1/views/DetailsView.kt")
-//processEach(f, layoutDir)
+//processEach(f, layoutDir, pkgName)
 
 // II. process each file
-void processEach(File file, File layoutXmlDir) {
+void processEach(File file, File layoutXmlDir, String pkgName) {
     final fileText = file.text
     boolean isKaeFile = fileText.contains("import kotlinx.android.synthetic.main")
     if (!isKaeFile) return
@@ -43,15 +47,15 @@ void processEach(File file, File layoutXmlDir) {
     //严格来说实为: `!isFragment && fileText.contains("override fun onCreate(")`
 
     if (isFragment) {
-        processFragmentFile(file, layoutXmlDir)
+        processFragmentFile(file, layoutXmlDir, pkgName)
     } else if (isActivity) {
-        processActivityFile(file, layoutXmlDir)
+        processActivityFile(file, layoutXmlDir, pkgName)
     } else {
-        processViewFile(file, layoutXmlDir)
+        processViewFile(file, layoutXmlDir, pkgName)
     }
 }
 
-void processActivityFile(File file, File layoutXmlDir) {
+void processActivityFile(File file, File layoutXmlDir, String pkgName) {
     String fileText = file.text
     // 1. remove imports
     String ret = removeKoeImports(fileText)
@@ -62,6 +66,7 @@ void processActivityFile(File file, File layoutXmlDir) {
             ?: getLayoutFileNameFromClassDefinition(fileText)
     if (layoutFileResult == null) return
     String bindingName = generateBindingName(layoutFileResult.layoutFileName)
+    ret = generateBindingImports(ret, bindingName, pkgName)
 
 
     // 3. add definition of binding
@@ -89,7 +94,7 @@ $setViewRootCode"""
     file.write(ret)
 }
 
-void processFragmentFile(File file, File layoutXmlDir) {
+void processFragmentFile(File file, File layoutXmlDir, String pkgName) {
     LayoutXmlPosition layoutPosition = LayoutXmlPosition.NONE
 
     String fileText = file.text
@@ -101,6 +106,7 @@ void processFragmentFile(File file, File layoutXmlDir) {
             ?: getLayoutFileNameFromClassDefinition(fileText)
     if (layoutFileResult == null) return
     String bindingName = generateBindingName(layoutFileResult.layoutFileName)
+    ret = generateBindingImports(ret, bindingName, pkgName)
 
     // 3. add definition of binding
     def bindingDefinitionAnchor = "    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {"
@@ -117,7 +123,7 @@ void processFragmentFile(File file, File layoutXmlDir) {
     file.write(ret)
 }
 
-void processViewFile(File file, File layoutXmlDir) {
+void processViewFile(File file, File layoutXmlDir, String pkgName) {
     String fileText = file.text
     // 1. remove imports
     String ret = removeKoeImports(fileText)
@@ -125,6 +131,7 @@ void processViewFile(File file, File layoutXmlDir) {
     // 2. get layout xml file name
     String layoutFileName = getLayoutFileNameFromView(ret)
     String bindingName = generateBindingName(layoutFileName)
+    ret = generateBindingImports(ret, bindingName, pkgName)
 
     // 3. generate definition of binding
     // View可能有两种constructor格式, 没办法, 只好要求replace要覆盖到这两种情况
@@ -240,6 +247,15 @@ private String generateBindingName(String layoutFileName) {
     return bindingName
 }
 
+private String generateBindingImports(String text, String bindingName, String pkgName) {
+    // import ca.six.demo.viewbinding_end.databinding.ActvCustomViewBinding
+    def newLine = System.lineSeparator()
+    def index = text.findIndexOf { (it == newLine) }
+    def to = "${newLine}${newLine}import ${pkgName}.databinding.${bindingName}"
+    def sb = new StringBuilder(text).insert(index, to)
+    return sb.toString()
+}
+
 private String generateBindingDefinition(String text, String anchor, String bindingName, Boolean isNullable) {
     String lateInitCode = """    private lateinit var binding: $bindingName
 
@@ -296,3 +312,18 @@ private String replaceOldView(String text, File layoutXmlFile, boolean isNullabl
 
 // ref
 // 1). https://stackoverflow.com/questions/1363643/regex-over-multiple-lines-in-groovy
+
+/*
+[ReadMe]
+1. projectDir, while (projectDir.name != 'KAE_Converter1') , appDir, 这里都要修改成我们目标工程的样子
+
+2. 目标工程要去build.gradle中打开viewbinding
+android {
+        ...
+        viewBinding {
+            enabled = true
+        }
+    }
+
+3.
+ */
