@@ -9,10 +9,10 @@ import kotlinx.android.synthetic.main.view_top_view.view.tvTitle
 class CustomViewPage3: AppCompatActivity(R.layout.actv_multi_use) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewTitle.tvTitle.text = "hello"
+//        viewTitle.tvTitle.text = "hello"
 
         btnChangeTitle.setOnClickListener {
-            viewTitle.tvTitle.text = "world"
+//            viewTitle.tvTitle.text = "world"
         }
     }
 }
