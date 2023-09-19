@@ -1,3 +1,5 @@
+import java.util.regex.Pattern
+
 enum LayoutXmlPosition {
     // common
     NONE,
