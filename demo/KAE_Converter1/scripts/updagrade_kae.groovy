@@ -1,1 +1,0 @@
-print("szw hello groovy")
