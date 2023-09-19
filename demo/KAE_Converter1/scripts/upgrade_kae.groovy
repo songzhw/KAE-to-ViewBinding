@@ -1,8 +1,3 @@
-package ca.six.grovwork.kae_to_viewbinding
-
-import java.util.regex.Pattern
-
-
 enum LayoutXmlPosition {
     // common
     NONE,
@@ -15,12 +10,14 @@ enum LayoutXmlPosition {
 }
 
 // I. find the target source folder
-File projectDir = new File("koe.groovy")
+File projectDir = new File("upgrade_kae.groovy")
 projectDir = projectDir.absoluteFile // 不然 file.path就是"kae.groovy", 而不是absolutPath. 这会不利于我们后面找parent
-while (projectDir.name != 'GroovyWork') {
+while (projectDir.name != 'KAE_Converter1') {
     projectDir = projectDir.parentFile
 }
-File appDir = new File(projectDir, "assets/kae/app/src/main")
+println projectDir.absolutePath
+
+File appDir = new File(projectDir, "/app/src/main")
 File kotlinDir = new File(appDir, "java/ca/six/demo/kae_converter1")
 File layoutDir = new File(appDir, "res/layout")
 
@@ -102,7 +99,6 @@ void processFragmentFile(File file, File layoutXmlDir) {
             ?: getLayoutFileNameFromClassDefinition(fileText)
     if (layoutFileResult == null) return
     String bindingName = generateBindingName(layoutFileResult.layoutFileName)
-    println layoutFileResult
 
     // 3. add definition of binding
     def bindingDefinitionAnchor = "    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {"
